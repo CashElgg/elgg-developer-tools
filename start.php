@@ -24,7 +24,7 @@
 	function elgg_dev_tools_page_handler()
 	{
 		global $CONFIG;
-		include $CONFIG->pluginspath . "elgg-developer-tools/index.php";
+		include $CONFIG->pluginspath . "elgg_dev_tools/index.php";
 		return true;
 	}
 	
@@ -46,5 +46,5 @@
 	
 	register_page_handler('elgg_dev_tools','elgg_dev_tools_page_handler');
 	
-	register_action("elgg_dev_tools/updatesettings", false, $CONFIG->pluginspath ."elgg-developer-tools/actions/updatesettings.php", true);
+	register_action("elgg_dev_tools/updatesettings", false, $CONFIG->pluginspath ."elgg_dev_tools/actions/updatesettings.php", true);
 ?>
