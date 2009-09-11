@@ -42,12 +42,9 @@ class ElggDevTools
         }
     }
     
-    /**
-     * Deletes View Cache
-     */
-    protected static function _deleteViews()
+    public static function isTimingOn()
     {
-        elgg_get_filepath_cache()->delete('view_paths');
-    }    
+    	return get_plugin_setting('timing', 'elgg_developer_tools');
+    }
 }
 ?>

@@ -9,11 +9,20 @@
 
 	function elgg_dev_tools_init()
 	{
+		global $CONFIG;
+		
 		// if enabled, we include this for every user
 		require_once dirname(__FILE__) . '/includes/ElggDevTools.php';
 		ElggDevTools::launcher();
 		 
 		extend_view('css', 'elgg_dev_tools/css');
+		
+		register_elgg_event_handler('shutdown', 'system', 'elgg_dev_tools_shutdown_hook');
+		register_elgg_event_handler('pagesetup', 'system', 'elgg_dev_tools_pagesetup');
+		
+		register_page_handler('elgg_dev_tools','elgg_dev_tools_page_handler');
+		
+		register_action("elgg_dev_tools/updatesettings", false, $CONFIG->pluginspath ."elgg_dev_tools/actions/updatesettings.php", true);
 		 
 		return true;
 	}
@@ -41,10 +50,20 @@
 		return true;
 	}
 	
-	register_elgg_event_handler('plugins_boot', 'system', 'elgg_dev_tools_init', 1);
-	register_elgg_event_handler('pagesetup', 'system', 'elgg_dev_tools_pagesetup');
+	/**
+	 * Write out page creation time (PHP + MySQL time)
+	 */
+	function elgg_dev_tools_shutdown_hook()
+	{
+		global $CONFIG, $START_MICROTIME;
+		
+		// run if debug is turned off and timing is turned on
+		if (isset($CONFIG->debug) && !$CONFIG->debug || ElggDevTools::isTimingOn())
+			error_log("Page {$_SERVER['REQUEST_URI']} generated in ".(float)(microtime(true)-$START_MICROTIME)." seconds"); 
+	}
 	
-	register_page_handler('elgg_dev_tools','elgg_dev_tools_page_handler');
+	// start the ElggDevTools as soon as possible (it is not recommended for other plugins to do this!)
+	elgg_dev_tools_init();
 	
-	register_action("elgg_dev_tools/updatesettings", false, $CONFIG->pluginspath ."elgg_dev_tools/actions/updatesettings.php", true);
+	//register_elgg_event_handler('init', 'system', 'elgg_dev_tools_init', 1);
 ?>

@@ -14,8 +14,6 @@
 	admin_gatekeeper();
 	set_context('admin');
 	
-	// need to set page owner to work around Elgg bug
-	set_page_owner(get_loggedin_userid());
 	
 	$title = elgg_view_title(elgg_echo('elgg_dev_tools:title'));
 	$body = elgg_view('elgg_dev_tools/index');

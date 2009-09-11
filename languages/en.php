@@ -43,6 +43,10 @@ $english = array(
 	'elgg_dev_tools:debug:question'           => 'Enable debug?',
 	'elgg_dev_tools:debug:explanation'        => "This writes a tremendous amount of data to your server's error log concerning SQL queries. It is rarely useful because there are no logging levels.",
 
+/** timing **/
+	'elgg_dev_tools:timing:question'           => 'Enable page creation timing?',
+	'elgg_dev_tools:timing:explanation'        => "This writes the amount of time the page creation process took to your error log.",
+
 );
 
 add_translation("en",$english);

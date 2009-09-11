@@ -21,7 +21,7 @@
 	
 	/** display errors **/
 	set_plugin_setting('displayerrors', get_input('displayerrors'), 'elgg_developer_tools');
-	
+
 	/** enable/disable simple cache **/
 	if (get_input('usesimplecache')) {
 		elgg_view_enable_simplecache();
@@ -43,6 +43,10 @@
 	else {
 		unset_config('debug');
 	}
+	
+	/** display errors **/
+	set_plugin_setting('timing', get_input('timing'), 'elgg_developer_tools');
+	
 	
 	/** set update message and redirect cuz we're done **/
 	system_message(elgg_echo("elgg_dev_tools:message:successfulupdate"));

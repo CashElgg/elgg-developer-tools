@@ -14,7 +14,7 @@ $viewscache_flag = $vars['config']->viewpath_cache_enabled;
 $firephp_flag = (int) get_plugin_setting('enablefirephp', 'elgg_developer_tools');
 $displayerrors_flag = (int) get_plugin_setting('displayerrors', 'elgg_developer_tools');
 $debug_flag = (int) $vars['config']->debug;
-
+$timing_flag = (int) get_plugin_setting('timing', 'elgg_developer_tools');
 
 
 
@@ -65,6 +65,12 @@ $form_body .= '<em>' . elgg_echo('elgg_dev_tools:enablefirephp:explanation') . '
 $form_body .= "<p><h4>" . elgg_echo('elgg_dev_tools:debug:question') . "</h4>";
 $form_body .= elgg_view('input/radio', array('value'=>$debug_flag, 'internalname'=>'debug', 'options'=>array(elgg_echo('elgg_dev_tools:yes')=>1, elgg_echo('elgg_dev_tools:no')=>0)));
 $form_body .= '<em>' . elgg_echo('elgg_dev_tools:debug:explanation') . '</em></p>';
+/** end debug **/
+
+/** debug **/
+$form_body .= "<p><h4>" . elgg_echo('elgg_dev_tools:timing:question') . "</h4>";
+$form_body .= elgg_view('input/radio', array('value'=>$timing_flag, 'internalname'=>'timing', 'options'=>array(elgg_echo('elgg_dev_tools:yes')=>1, elgg_echo('elgg_dev_tools:no')=>0)));
+$form_body .= '<em>' . elgg_echo('elgg_dev_tools:timing:explanation') . '</em></p>';
 /** end debug **/
 
 
