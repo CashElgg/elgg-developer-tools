@@ -44,8 +44,11 @@
 		unset_config('debug');
 	}
 	
-	/** display errors **/
+	/** timing **/
 	set_plugin_setting('timing', get_input('timing'), 'elgg_developer_tools');
+	
+	/** timing **/
+	set_plugin_setting('showviews', get_input('showviews'), 'elgg_developer_tools');
 	
 	
 	/** set update message and redirect cuz we're done **/

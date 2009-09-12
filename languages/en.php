@@ -34,6 +34,8 @@ $english = array(
 	'elgg_dev_tools:debug:explanation'			=> "This writes a tremendous amount of data to your server's error log concerning SQL queries. It is rarely useful because there are no logging levels.",
 	'elgg_dev_tools:timing:question'			=> 'Enable page creation timing?',
 	'elgg_dev_tools:timing:explanation'			=> "This writes the amount of time the page creation process took to your error log.",
+	'elgg_dev_tools:showviews:question'			=> 'Wrap views with div elements?',
+	'elgg_dev_tools:showviews:explanation'		=> 'This wraps almost every view with a div container named for the view.',
 
 
 // plugin builder
