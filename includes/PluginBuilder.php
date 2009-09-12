@@ -161,15 +161,52 @@ class PluginBuilder {
 		// page handler
 		$ph_reg = "";
 		$ph_func = "";
-		if ($params['page_handler'])
+		$ph = $params['page_handler'];
+		if ($ph)
 		{
-			$ph = $params['page_handler'];
 			$ph_reg = "		register_page_handler('{$ph}','{$plugin_name}_page_handler');\n";
-			$ph_func .= "	function {$plugin_name}_page_handler($page)\n";
+			
+			// replace this with a template in future
+			$ph_func .= "	function {$plugin_name}_page_handler(\$page)\n";
 			$ph_func .= "	{\n";
 			$ph_func .= "		global \$CONFIG;\n\n"; 
 			$ph_func .= "		\n";
+			$ph_func .= "		switch (\$page[0])\n";
+			$ph_func .= "		{\n";
+		
+			if ($params['pages'])
+			{
+				$pages = explode(',', $params['pages']);
+				foreach ($pages as $page)
+				{
+					$page = trim($page);
+					$ph_func .= "			case '{$page}':\n";
+					$ph_func .= "				include \$CONFIG->pluginspath . '{$plugin_name}/pages/{$page}.php';\n";
+					$ph_func .= "				break;\n";
+				}
+			}
+			
+			$ph_func .= "		\n";
+			$ph_func .= "		}\n";
+			$ph_func .= "		\n";
+			$ph_func .= "		return true;\n";
 			$ph_func .= "	}\n";		
+		}
+		
+		// tool menu item
+		$menu_reg = "";
+		if ($params['pages'])
+		{
+			$pages = explode(',', $params['pages']);
+			$page = trim($pages[0]);
+			if ($params['page_handler'])
+			{
+				$menu_reg = "		add_menu({$plugin_name}, \$CONFIG->wwwroot . 'pg/{$ph}/{$page}/');\n";
+			}
+			else
+			{
+				$menu_reg = "		add_menu({$plugin_name}, \$CONFIG->wwwroot . 'mod/{$plugin_name}/pages/{$page}.php');\n";
+			}
 		}
 		
 		// widget
@@ -190,6 +227,7 @@ class PluginBuilder {
 		$params['action_registration'] = $action_reg;
 		$params['page_handler_registration'] = $ph_reg;
 		$params['page_handler_func'] = $ph_func;
+		$params['menu_registration'] = $menu_reg;
 		$params['widget_registration'] = $widget_reg;
 		$params['extend_css_call'] = $css_reg;
 		

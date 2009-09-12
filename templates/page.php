@@ -8,6 +8,15 @@
 	
 	// get any input
 	//$param = get_input('param');
+	
+	// if username or owner_guid was not set as input variable, we need to set page owner
+	// Get the current page's owner
+	$page_owner = page_owner_entity();
+	if (!$page_owner) {
+		$page_owner_guid = get_loggedin_userid();
+		if ($page_owner_guid)
+			set_page_owner($page_owner_guid);
+	}	
 
 	$title = elgg_echo('%%plugin_name%%:pagetitle');
 	

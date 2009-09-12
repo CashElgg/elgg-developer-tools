@@ -14,7 +14,9 @@
 %%widget_registration%%
 
 %%page_handler_registration%%
-		
+
+%%menu_registration%%
+
 %%action_registration%%		
 		
 		return true;
