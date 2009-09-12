@@ -41,7 +41,7 @@ class PluginBuilder {
 		{
 			$this->createDirectory($html_dir . 'usersettings/');
 			$this->createDirectory($html_dir . 'usersettings/' . $params['plugin_name']);
-			$this->createFile($html_dir . "settings/" . $params['plugin_name'] . '/edit.php', 'edit.php', $params);
+			$this->createFile($html_dir . "usersettings/" . $params['plugin_name'] . '/edit.php', 'edit.php', $params);
 		}
 		
 		// widget
