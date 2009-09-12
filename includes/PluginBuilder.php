@@ -71,6 +71,17 @@ class PluginBuilder {
 			}
 		}
 		
+		// actions
+		if ($params['actions'])
+		{
+			$actions = explode(',', $params['actions']);
+			foreach ($actions as $action)
+			{
+				$page = trim($action);
+				$this->createFile($plugin_dir . 'actions/' . $action . '.php', 'action.php', $params);
+			}
+		}
+		
 		// start.php
 		$this->createFile($plugin_dir . 'start.php', 'start.php', $params);
 		// manifest.xml
@@ -119,7 +130,12 @@ class PluginBuilder {
 			$map .= "	'{$params['plugin_name']}:pagetitle'	=> 'My Page Title',\n";
 		if ($params['widget'] || $params['user_settings'] || $params['plugin_settings'])
 			$map .= "	'{$params['plugin_name']}:param_label'	=> 'My Parameter',\n";
-
+		if ($params['actions'])
+		{
+			$map .= "	'{$params['plugin_name']}:success'	=> 'Your action was successful',\n";
+			$map .= "	'{$params['plugin_name']}:failure'	=> 'Your action failed',\n";
+		}
+			
 		$params['language_map'] = $map;
 		
 		$this->createFile($plugin_dir . 'languages/en.php', 'en.php', $params);
