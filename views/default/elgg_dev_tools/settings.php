@@ -1,6 +1,6 @@
 <?php 
 /*******************************************************************************
- * Admin Form View
+ * Settings Form View
  * 
  * This is the form that the admin uses to change elgg dev tools options
  * 
@@ -19,7 +19,7 @@ $timing_flag = (int) get_plugin_setting('timing', 'elgg_developer_tools');
 
 /******************** build form *******************************/
 
-$form_body = '<p>' . elgg_echo('elgg_dev_tools:explanation') . '</p>';
+$form_body = '<p>' . elgg_echo('elgg_dev_tools:settings:explanation') . '</p>';
 
 /** simple cache **/
 $form_body .= "<p><h4>" . elgg_echo('elgg_dev_tools:simplecache:question') . "</h4>";
@@ -71,7 +71,7 @@ $form_body .= '<em>' . elgg_echo('elgg_dev_tools:timing:explanation') . '</em></
 
 $form_body .= "<br /><br />";
 
-$form_body .= elgg_view('input/submit', array('value'=>elgg_echo('elgg_dev_tools:formbutton')));
+$form_body .= elgg_view('input/submit', array('value'=>elgg_echo('elgg_dev_tools:settings:formbutton')));
 
 echo elgg_view('input/form', array('body'=>$form_body, 'action'=>$CONFIG->wwwroot . 'action/elgg_dev_tools/updatesettings', 'internalid'=>'elgg_dev_tools_form'));
 

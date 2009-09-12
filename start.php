@@ -23,7 +23,8 @@
 		register_page_handler('elgg_dev_tools','elgg_dev_tools_page_handler');
 		
 		register_action("elgg_dev_tools/updatesettings", false, $CONFIG->pluginspath ."elgg_dev_tools/actions/updatesettings.php", true);
-		 
+		register_action("elgg_dev_tools/buildplugin", false, $CONFIG->pluginspath ."elgg_dev_tools/actions/buildplugin.php", true);
+		
 		return true;
 	}
 	

@@ -13,15 +13,17 @@ $english = array(
 	'elgg_dev_tools:title'                    => 'Elgg Development Tools',
 	'elgg_dev_tools:adminlink'                => 'Elgg Developer Tools',
 	'elgg_dev_tools:message:successfulupdate' => 'The Developer Settings have been updated.',
+	'elgg_dev_tools:message:successfulbuild'  => 'Your plugin %s has been created',
 	'elgg_dev_tools:yes'                      => 'Yes',
 	'elgg_dev_tools:no'                       => 'No',
 
 	'elgg_dev_tools:settings'                 => "Developer Settings",
 	'elgg_dev_tools:builder'                  => "Plugin Builder",
 
-/** form elements **/
-	'elgg_dev_tools:explanation'              => 'Control your development and debugging settings below. Some of these are also available from the Site Administration section of Elgg.',
-	'elgg_dev_tools:formbutton'               => 'Update Settings',
+
+/** settings **/
+	'elgg_dev_tools:settings:explanation'              => 'Control your development and debugging settings below. Some of these are also available from the Site Administration section of Elgg.',
+	'elgg_dev_tools:settings:formbutton'               => 'Update Settings',
 
 /** simple cache **/
 	'elgg_dev_tools:simplecache:question'     => 'Use simple cache?',
@@ -48,6 +50,15 @@ $english = array(
 	'elgg_dev_tools:timing:question'           => 'Enable page creation timing?',
 	'elgg_dev_tools:timing:explanation'        => "This writes the amount of time the page creation process took to your error log.",
 
+
+/** plugin builder **/
+	'elgg_dev_tools:builder:explanation'       => 'Build the skeleton of a plugin by setting the parameters below.',
+	'elgg_dev_tools:builder:formbutton'        => 'Build Plugin',
+
+	// plugin name
+	'elgg_dev_tools:plugin_name'               => 'Plugin name',
+	'elgg_dev_tools:plugin_name:explanation'   => 'Name of your plugin directory. Recommend no special characters or spaces.',
+      
 );
 
 add_translation("en",$english);
