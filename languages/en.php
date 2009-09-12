@@ -16,11 +16,12 @@ $english = array(
 	'elgg_dev_tools:yes'                      => 'Yes',
 	'elgg_dev_tools:no'                       => 'No',
 
+	'elgg_dev_tools:settings'                 => "Developer Settings",
+	'elgg_dev_tools:builder'                  => "Plugin Builder",
+
 /** form elements **/
-	'elgg_dev_tools:legend'                	  => 'Developer Settings',
 	'elgg_dev_tools:explanation'              => 'Control your development and debugging settings below. Some of these are also available from the Site Administration section of Elgg.',
 	'elgg_dev_tools:formbutton'               => 'Update Settings',
-	'elgg_dev_tools:formexplanation'          => 'The following options should help make your Elgg hacking easier!',
 
 /** simple cache **/
 	'elgg_dev_tools:simplecache:question'     => 'Use simple cache?',
@@ -36,7 +37,7 @@ $english = array(
 
 /** fire php **/
 	'elgg_dev_tools:enablefirephp:question'   => 'Enable FirePHP logging?',
-	'elgg_dev_tools:enablefirephp:explanation'=> 'Enable the FirePHP logging class - useful for ajax development.  See <a href="http://firephp.org">firephp.org</a>.',
+	'elgg_dev_tools:enablefirephp:explanation'=> 'Enable the FirePHP logging class - useful for ajax development or pushing debug information to Firebug.  See <a href="http://firephp.org">firephp.org</a>.',
 	'elgg_dev_tools:enablefirephp:warning'    => "FirePHP is saying that you don't have the FirePHP Firefox extension installed.  If you really don't, check out <a href=\"http://firephp.org\">firephp.org</a> to get it.  Otherwise, just ignore this message.",
 
 /** debug **/

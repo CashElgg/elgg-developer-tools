@@ -14,9 +14,10 @@
 	admin_gatekeeper();
 	set_context('admin');
 	
+	$tab = get_input("tab");
 	
 	$title = elgg_view_title(elgg_echo('elgg_dev_tools:title'));
-	$body = elgg_view('elgg_dev_tools/index');
+	$body = elgg_view('elgg_dev_tools/index', array("tab" => $tab));
 	
 	
 	page_draw(elgg_echo('elgg_dev_tools:title'), elgg_view_layout("two_column_left_sidebar", '', $title . $body));

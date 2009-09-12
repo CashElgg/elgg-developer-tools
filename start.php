@@ -30,10 +30,17 @@
 	/**
 	 * page handler for nicer urls 
 	 */
-	function elgg_dev_tools_page_handler()
+	function elgg_dev_tools_page_handler($page)
 	{
 		global $CONFIG;
+		
+		$tab = $page[0];
+		if (!$tab)
+			$tab = "settings";
+		
+		set_input("tab", $tab);
 		include $CONFIG->pluginspath . "elgg_dev_tools/index.php";
+		
 		return true;
 	}
 	
