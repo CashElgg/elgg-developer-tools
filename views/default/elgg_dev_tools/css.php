@@ -8,3 +8,6 @@
 #elgg_dev_tools_form label {
 	font-size: 100%;
 }
+.elgg_dev_tools_checkbox {
+	vertical-align: top;
+}

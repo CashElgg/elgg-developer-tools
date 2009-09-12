@@ -1,11 +1,11 @@
 <?php
 /*******************************************************************************
- * %name%
+ * %%plugin_name%%
  *
- * @author %author%
+ * @author %%author%%
  ******************************************************************************/
 
-	function %name%_init()
+	function %%plugin_name%%_init()
 	{
 		global $CONFIG;
 				
@@ -13,5 +13,5 @@
 	}
 	
 	
-	register_elgg_event_handler('init', 'system', '%name%_init');
+	register_elgg_event_handler('init', 'system', '%%plugin_name%%_init');
 ?>

@@ -45,18 +45,6 @@ class ElggDevTools
     public static function isTimingOn()
     {
     	return get_plugin_setting('timing', 'elgg_developer_tools');
-    }
-    
-    public static function createFile($filename, $template, array $vars)
-	{
-		$file = file_get_contents($template);
-			
-		if (!$file) return false; 
-			
-		foreach ($vars as $k => $v)
-			$file = str_replace("%$k%", $v, $file);
-			
-		return file_put_contents($filename, $file);
-	}
+    }    
 }
 ?>
