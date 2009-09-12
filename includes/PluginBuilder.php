@@ -94,8 +94,8 @@ class PluginBuilder {
 		
 	public function createFile($filename, $template, array $vars)
 	{
-		error_log('template is ' . $this->template_dir . $template);
-		error_log('new file is ' . $this->base_dir . $filename);
+		//error_log('template is ' . $this->template_dir . $template);
+		//error_log('new file is ' . $this->base_dir . $filename);
 		
 		$file = file_get_contents($this->template_dir . $template);
 			
@@ -113,7 +113,8 @@ class PluginBuilder {
 	
 	public function createDirectory($new_dir)
 	{
-		error_log('trying to create directory ' . $this->base_dir . $new_dir);
+		//error_log('trying to create directory ' . $this->base_dir . $new_dir);
+		
 		if (file_exists($this->base_dir . $new_dir))
 			return;
 			
@@ -193,8 +194,10 @@ class PluginBuilder {
 			$ph_func .= "	}\n";		
 		}
 		
-		// tool menu item
+		// tool menu item and sidebar menu
 		$menu_reg = "";
+		$sidebar_reg = "";
+		$sidebar_func = "";
 		if ($params['pages'])
 		{
 			$pages = explode(',', $params['pages']);
@@ -206,6 +209,33 @@ class PluginBuilder {
 			else
 			{
 				$menu_reg = "		add_menu({$plugin_name}, \$CONFIG->wwwroot . 'mod/{$plugin_name}/pages/{$page}.php');\n";
+			}
+			
+			if ($ph)
+			{
+				$sidebar_reg = "		register_elgg_event_handler('pagesetup','system','{$plugin_name}_submenus');\n";
+				
+				// replace this with a template in future
+				$sidebar_func .= "	function {$plugin_name}_submenus()\n";
+				$sidebar_func .= "	{\n";
+				$sidebar_func .= "		global \$CONFIG;\n\n"; 
+				$sidebar_func .= "		\n";
+				$sidebar_func .= "		if (get_context() == '{$ph}')\n";
+				$sidebar_func .= "		{\n";
+			
+				if ($params['pages'])
+				{
+					$pages = explode(',', $params['pages']);
+					foreach ($pages as $page)
+					{
+						$page = trim($page);
+						$sidebar_func .= "			add_submenu_item('{$page}', \$CONFIG->wwwroot . 'pg/{$ph}/{$page}/');\n";
+					}
+				}
+	
+				$sidebar_func .= "		}\n";
+				$sidebar_func .= "		\n";
+				$sidebar_func .= "	}\n";
 			}
 		}
 		
@@ -228,6 +258,8 @@ class PluginBuilder {
 		$params['page_handler_registration'] = $ph_reg;
 		$params['page_handler_func'] = $ph_func;
 		$params['menu_registration'] = $menu_reg;
+		$params['sidebar_menu_registration'] = $sidebar_reg;
+		$params['sidebar_menu_func'] = $sidebar_func;
 		$params['widget_registration'] = $widget_reg;
 		$params['extend_css_call'] = $css_reg;
 		
