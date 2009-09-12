@@ -75,6 +75,8 @@ class PluginBuilder {
 		$this->createFile($plugin_dir . 'start.php', 'start.php', $params);
 		// manifest.xml
 		$this->createFile($plugin_dir . 'manifest.xml', 'manifest.xml', $params);
+		// language file
+		$this->createLanguageFile($plugin_dir, $params);
 		
 	}
 		
@@ -90,17 +92,37 @@ class PluginBuilder {
 		foreach ($vars as $k => $v)
 			$file = str_replace("%%$k%%", $v, $file);
 			
-		return file_put_contents($this->base_dir . $filename, $file);
+		if (!file_put_contents($this->base_dir . $filename, $file))
+		{
+			register_error(sprintf(elgg_echo('elgg_dev_tools:error:file_error'), $filename));
+			forward('pg/elgg_dev_tools/builder/');	
+		}
 	}
 	
 	public function createDirectory($new_dir)
 	{
 		error_log('trying to create directory ' . $this->base_dir . $new_dir);
+		if (file_exists($this->base_dir . $new_dir))
+			return;
+			
 		if (!mkdir($this->base_dir . $new_dir))
 		{
-			register_error(elgg_echo(sprintf('elgg_dev_tools:error:dir_error'), $new_dir));
+			register_error(sprintf(elgg_echo('elgg_dev_tools:error:dir_error'), $new_dir));
 			forward('pg/elgg_dev_tools/builder/');	
 		}
+	}
+	
+	public function createLanguageFile($plugin_dir, $params)
+	{
+		$map = "";
+		if ($params['pages'])
+			$map .= "	'{$params['plugin_name']}:pagetitle'	=> 'My Page Title',\n";
+		if ($params['widget'] || $params['user_settings'] || $params['plugin_settings'])
+			$map .= "	'{$params['plugin_name']}:param_label'	=> 'My Parameter',\n";
+
+		$params['language_map'] = $map;
+		
+		$this->createFile($plugin_dir . 'languages/en.php', 'en.php', $params);
 	}
 	
 }
