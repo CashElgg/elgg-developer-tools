@@ -33,7 +33,7 @@ class PluginBuilder {
 		{
 			$this->createDirectory($html_dir . 'settings/');
 			$this->createDirectory($html_dir . 'settings/' . $params['plugin_name']);
-			$this->createFile($html_dir . 'settings/' . $params['plugin_name'] . '/edit.php', 'edit.php', $params);
+			$this->createFile($html_dir . 'settings/' . $params['plugin_name'] . '/edit.php', 'edit.tmpl', $params);
 		}
 		
 		// user settings
@@ -41,7 +41,7 @@ class PluginBuilder {
 		{
 			$this->createDirectory($html_dir . 'usersettings/');
 			$this->createDirectory($html_dir . 'usersettings/' . $params['plugin_name']);
-			$this->createFile($html_dir . "usersettings/" . $params['plugin_name'] . '/edit.php', 'edit.php', $params);
+			$this->createFile($html_dir . "usersettings/" . $params['plugin_name'] . '/edit.php', 'edit.tmpl', $params);
 		}
 		
 		// widget
@@ -49,15 +49,15 @@ class PluginBuilder {
 		{
 			$this->createDirectory($html_dir . 'widgets/');
 			$this->createDirectory($html_dir . 'widgets/' . $params['plugin_name']);
-			$this->createFile($html_dir . "widgets/" . $params['plugin_name'] . '/edit.php', 'edit.php', $params);
-			$this->createFile($html_dir . "widgets/" . $params['plugin_name'] . '/view.php', 'view.php', $params);
+			$this->createFile($html_dir . "widgets/" . $params['plugin_name'] . '/edit.php', 'edit.tmpl', $params);
+			$this->createFile($html_dir . "widgets/" . $params['plugin_name'] . '/view.php', 'view.tmpl', $params);
 		}
 		
 		// css
 		if ($params['css'])
 		{
 			$this->createDirectory($html_dir . $params['plugin_name']);
-			$this->createFile($html_dir . $params['plugin_name'] . '/css.php', 'css.php', $params);
+			$this->createFile($html_dir . $params['plugin_name'] . '/css.php', 'css.tmpl', $params);
 		}
 		
 		// primary pages
@@ -67,7 +67,7 @@ class PluginBuilder {
 			foreach ($pages as $page)
 			{
 				$page = trim($page);
-				$this->createFile($plugin_dir . 'pages/' . $page . '.php', 'page.php', $params);
+				$this->createFile($plugin_dir . 'pages/' . $page . '.php', 'page.tmpl', $params);
 			}
 		}
 		
@@ -78,7 +78,7 @@ class PluginBuilder {
 			foreach ($actions as $action)
 			{
 				$action = trim($action);
-				$this->createFile($plugin_dir . 'actions/' . $action . '.php', 'action.php', $params);
+				$this->createFile($plugin_dir . 'actions/' . $action . '.php', 'action.tmpl', $params);
 			}
 		}
 		
@@ -140,7 +140,7 @@ class PluginBuilder {
 			
 		$params['language_map'] = $map;
 		
-		$this->createFile($plugin_dir . 'languages/en.php', 'en.php', $params);
+		$this->createFile($plugin_dir . 'languages/en.php', 'en.tmpl', $params);
 	}
 	
 	public function createStartFile($plugin_dir, $params)
@@ -263,7 +263,7 @@ class PluginBuilder {
 		$params['widget_registration'] = $widget_reg;
 		$params['extend_css_call'] = $css_reg;
 		
-		$this->createFile($plugin_dir . 'start.php', 'start.php', $params);
+		$this->createFile($plugin_dir . 'start.php', 'start.tmpl', $params);
 	}
 	
 }
