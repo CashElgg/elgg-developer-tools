@@ -17,9 +17,6 @@
 	// get form inputs
 	$params = $_REQUEST['params'];
 		
-	foreach ($params as $k => $v)
-		error_log($k . " " . $v);
-	
 	// cache inputs in case something doesn't validate or something goes wrong in the creation process
 	$_SESSION['build_plugin'] = $params;
 		
@@ -27,7 +24,7 @@
 	if (!$params['plugin_name'])
 	{
 		register_error(elgg_echo('elgg_dev_tools:error:nopluginname'));
-		forward('pg/elgg_dev_tools/builder/');
+		forward('pg/elgg_dev_tools/builder/?tab=builder');
 	}
 	$params['plugin_name'] = trim($params['plugin_name']);
 	

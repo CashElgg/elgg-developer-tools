@@ -11,3 +11,6 @@
 .elgg_dev_tools_checkbox {
 	vertical-align: top;
 }
+.elgg_dev_tools_tab {
+	display: none;
+}
