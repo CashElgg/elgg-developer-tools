@@ -16,6 +16,7 @@
 		ElggDevTools::launcher();
 		 
 		extend_view('css', 'elgg_dev_tools/css');
+		extend_view('metatags', 'header/elgg_dev_tools');
 		
 		register_elgg_event_handler('pagesetup', 'system', 'elgg_dev_tools_pagesetup');
 		

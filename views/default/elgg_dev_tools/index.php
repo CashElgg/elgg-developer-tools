@@ -16,11 +16,15 @@
 		
 	$settingsselect = 'class="edt_tab_nav"'; 
 	$builderselect = 'class="edt_tab_nav"';
+	$inspectselect = 'class="edt_tab_nav"';
 	switch($tab) {
 		case 'builder':
 			$builderselect = 'class="selected edt_tab_nav"';
 			break;
-		case 'settings':
+		case 'inspect':
+			$inspectselect = 'class="selected edt_tab_nav"';
+			break;
+			case 'settings':
 		default:
 			$settingsselect = 'class="selected edt_tab_nav"';
 			break;
@@ -32,6 +36,7 @@
 		<ul>
 			<li id="edt_settings_nav" <?php echo $settingsselect; ?>><a href="javascript:edtSwitchTab('edt_settings')"><?php echo elgg_echo('elgg_dev_tools:settings'); ?></a></li>
 			<li id="edt_builder_nav" <?php echo $builderselect; ?>><a href="javascript:edtSwitchTab('edt_builder')"><?php echo elgg_echo('elgg_dev_tools:builder'); ?></a></li>
+			<li id="edt_inspect_nav" <?php echo $inspectselect; ?>><a href="javascript:edtSwitchTab('edt_inspect')"><?php echo elgg_echo('elgg_dev_tools:inspect'); ?></a></li>
 		</ul>
 	</div>
 	<br />
@@ -44,6 +49,11 @@
 	<div id="edt_builder_tab" class="elgg_dev_tools_tab">
 <?php 
 	echo elgg_view("elgg_dev_tools/builder");
+?>
+	</div>
+	<div id="edt_inspect_tab" class="elgg_dev_tools_tab">
+<?php 
+	echo elgg_view("elgg_dev_tools/inspect");
 ?>
 	</div>
 	

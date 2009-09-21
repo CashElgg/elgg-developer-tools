@@ -63,6 +63,9 @@ $english = array(
 	'elgg_dev_tools:css'						=> 'Extend CSS',
 	'elgg_dev_tools:css:explanation'			=> 'Will your plugin need to add anything to the CSS?',
 
+// inspect
+	'elgg_dev_tools:inspect'					=> 'Inspect',
+
 );
 
 add_translation("en",$english);
