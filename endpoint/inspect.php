@@ -8,6 +8,26 @@
  * @author Cash Costello
  ******************************************************************************/
 
+	/**
+	 * Writes an ordered list from an associative array of indexed arrays
+	 * @param $data
+	 */
+	function edt_display_tree($data)
+	{
+		echo "<ul>";
+		foreach ($data as $key => $arr)
+		{
+			echo "<li>{$key}";
+			echo "<ul>";
+			foreach ($arr as $value)
+				echo "<li>{$value}</li>";
+			echo "</ul>";
+			echo "</li>";
+		}
+		echo "</ul>";		
+	}
+
+
 	require_once(dirname(dirname(dirname(dirname(__FILE__)))) . "/engine/start.php");
 	require_once dirname(dirname(__FILE__)) . '/includes/ElggInspector.php';
 	
@@ -19,35 +39,16 @@
 	
 	$views = $inspector->getCoreViews();
 
+	echo '<div id="demo1">';
+	edt_display_tree($views);
+	echo '</div>';
+		
 	
 /*
 	//var_dump($CONFIG->views->simplecache);
 	
 	//var_dump($CONFIG->views->locations);
-	
-	//var_dump($CONFIG->views->extensions);
-	echo '<div id="demo1">';
-	echo "<ul>";
-	
-	foreach ($CONFIG->views->locations['default'] as $k => $v)
-	{
-		echo "<li>{$k}";
-		echo "<ul>";
-		echo "<li>{$v}</li>";
-		if (isset($CONFIG->views->extensions[$k]))
-		{
-			foreach ($CONFIG->views->extensions[$k] as $p => $view)
-			{
-				echo "<li>{$view}</li>";
-			}	
-		}
-		echo "</ul>";
-		echo "</li>";
-	}
-	
-	echo "</ul>";
-	echo "</div>";
-*/
+*/	
 	
 ?>
 <!--  
