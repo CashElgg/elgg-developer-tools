@@ -65,6 +65,7 @@ $english = array(
 
 // inspect
 	'elgg_dev_tools:inspect'					=> 'Inspect',
+	'elgg_dev_tools:inspect:explanation'		=> 'Inspect global variables of the Elgg framework.',
 
 );
 

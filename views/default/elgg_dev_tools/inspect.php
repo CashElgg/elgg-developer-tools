@@ -34,7 +34,7 @@ function edtInspectSubmit()
 		cache: false,
 		success: function(data){
 			$("#edt_inspect_results").html(data);
-			$("#demo1").tree();
+			$("#elgg_dev_tools_inspect").tree();
 		}
 	});
 }

@@ -35,11 +35,16 @@
 	
 	admin_gatekeeper();
 	
+	$inspect_type = get_input('type');
+	
 	$inspector = new ElggInspector();
 	
 	$views = $inspector->getCoreViews();
 
-	echo '<div id="demo1">';
+	echo '<br />';
+	echo '<h3>' . $inspect_type . '</h3>'; 
+	echo '<hr />';
+	echo '<div id="elgg_dev_tools_inspect">';
 	edt_display_tree($views);
 	echo '</div>';
 		
@@ -51,17 +56,3 @@
 */	
 	
 ?>
-<!--  
-<div id="demo1">
-	<ul>
-		<li>Root node 1
-			<ul>
-				<li>Custom icon</li>
-				<li>Child node 2</li>
-				<li>Some other child node 111</li>
-			</ul>
-		</li>
-		<li>Root node 2</li>
-	</ul>
-</div>
--->

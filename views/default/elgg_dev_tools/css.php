@@ -14,3 +14,6 @@
 .elgg_dev_tools_tab {
 	display: none;
 }
+#elgg_dev_tools_inspect {
+	margin-bottom: 30px;
+}
