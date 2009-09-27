@@ -39,14 +39,29 @@
 	
 	$inspector = new ElggInspector();
 	
-	$views = $inspector->getCoreViews();
+	switch ($inspect_type)
+	{
+		case 'Views':
+			$tree = $inspector->getElggViews();
+			break;
+		case 'Events':
+			$tree = $inspector->getElggEvents();
+			break;
+		case 'Plugin Hooks':
+			$tree = $inspector->getElggHooks();
+			break;
+		default:
+			echo "$inspect_type are not implemented";
+			break;
+	}
 
 	echo '<br />';
 	echo '<h3>' . $inspect_type . '</h3>'; 
 	echo '<hr />';
 	echo '<div id="elgg_dev_tools_inspect">';
-	edt_display_tree($views);
+	edt_display_tree($tree);
 	echo '</div>';
+	echo '<div class="clearfloat"></div>';
 		
 	
 /*

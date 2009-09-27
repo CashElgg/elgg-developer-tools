@@ -1,8 +1,40 @@
 <?php
 
 class ElggInspector {
+
+	public function getElggEvents()
+	{
+		global $CONFIG;
+		
+		$tree = array();
+		foreach ($CONFIG->events as $event => $types)
+		{
+			foreach ($types as $type => $handlers)
+			{
+				$tree[$event . ',' . $type] = array_values($handlers);
+			}
+		}
+		
+		return $tree;
+	}
 	
-	public function getCoreViews()
+	public function getElggHooks()
+	{
+		global $CONFIG;
+		
+		$tree = array();
+		foreach ($CONFIG->hooks as $hook => $types)
+		{
+			foreach ($types as $type => $handlers)
+			{
+				$tree[$hook . ',' . $type] = array_values($handlers);
+			}
+		}
+		
+		return $tree;
+	}
+	
+	public function getElggViews()
 	{
 		global $CONFIG;
 		
@@ -34,15 +66,7 @@ class ElggInspector {
 			if (count($view_list) > 0)
 				$views[$view] = $view_list;
 		}
-/*
-		if (isset($CONFIG->views->extensions[$k]))
-		{
-			foreach ($CONFIG->views->extensions[$k] as $p => $view)
-			{
-				echo "<li>{$view}</li>";
-			}	
-		}
-*/			
+
 		ksort($views);
 		
 		return $views;

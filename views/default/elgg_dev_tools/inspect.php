@@ -13,7 +13,10 @@ global $CONFIG;
 echo '<p>' . elgg_echo('elgg_dev_tools:inspect:explanation') . '</p>';
 
 echo elgg_view('input/pulldown', array( 'internalname' => 'inspect_type',
-										'options_values' => array('views' => 'Views', 'test' => 'Test', )));
+										'options_values' => array(	'Views' => 'Views', 
+																	'Events' => 'Events',
+																	'Plugin Hooks' => 'Plugin Hooks',
+																) ));
 
 echo '<br />';
 
