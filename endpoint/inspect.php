@@ -50,6 +50,18 @@
 		case 'Plugin Hooks':
 			$tree = $inspector->getElggHooks();
 			break;
+		case 'Widgets':
+			$tree = $inspector->getElggWidgets();
+			break;
+		case 'Actions':
+			$tree = $inspector->getElggActions();
+			break;
+		case 'Simple Cache':
+			$tree = $inspector->getElggSimpleCache();
+			break;
+		case 'REST API':
+			$tree = $inspector->getElggREST();
+			break;
 		default:
 			echo "$inspect_type are not implemented";
 			break;
@@ -62,12 +74,5 @@
 	edt_display_tree($tree);
 	echo '</div>';
 	echo '<div class="clearfloat"></div>';
-		
-	
-/*
-	//var_dump($CONFIG->views->simplecache);
-	
-	//var_dump($CONFIG->views->locations);
-*/	
-	
+
 ?>

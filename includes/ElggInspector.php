@@ -2,6 +2,11 @@
 
 class ElggInspector {
 
+	/**
+	 * Get Elgg Event information
+	 * 
+	 * returns [event,type] => array(handlers)
+	 */
 	public function getElggEvents()
 	{
 		global $CONFIG;
@@ -15,9 +20,16 @@ class ElggInspector {
 			}
 		}
 		
+		ksort($tree);
+		
 		return $tree;
 	}
 	
+	/**
+	 * Get Elgg Plugin Hooks information
+	 * 
+	 * returns [hook,type] => array(handlers)
+	 */
 	public function getElggHooks()
 	{
 		global $CONFIG;
@@ -31,9 +43,16 @@ class ElggInspector {
 			}
 		}
 		
+		ksort($tree);
+		
 		return $tree;
 	}
 	
+	/**
+	 * Get Elgg View information
+	 * 
+	 * returns [view] => array(view location and extensions)
+	 */
 	public function getElggViews()
 	{
 		global $CONFIG;
@@ -72,7 +91,94 @@ class ElggInspector {
 		return $views;
 	}
 	
+	/**
+	 * Get Elgg Widget information
+	 * 
+	 * returns [widget] => array(name, contexts)
+	 */
+	public function getElggWidgets()
+	{
+		global $CONFIG;
+		
+		$tree = array();
+		foreach ($CONFIG->widgets->handlers as $handler => $handler_obj)
+		{
+			$tree[$handler] = array($handler_obj->name, implode(',', array_values($handler_obj->context)));
+		}
+		
+		ksort($tree);
+		
+		return $tree;
+	}
 	
+	
+	/**
+	 * Get Elgg Actions information
+	 * 
+	 * returns [action] => array(file, public, admin)
+	 */
+	public function getElggActions()
+	{
+		global $CONFIG;
+		
+		$tree = array();
+		foreach ($CONFIG->actions as $action => $info)
+		{
+			$tree[$action] = array($info['file'], ($info['public']) ? 'public' : 'logged in only', ($info['admin']) ? 'admin only' : 'non-admin');
+		}
+		
+		ksort($tree);
+		
+		return $tree;
+	}
+	
+	/**
+	 * Get Simple Cache information
+	 * 
+	 * returns [views]
+	 */
+	public function getElggSimpleCache()
+	{
+		global $CONFIG;
+		
+		$tree = array();
+		foreach ($CONFIG->views->simplecache as $view)
+		{
+			$tree[$view] = "";
+		}
+		
+		ksort($tree);
+		
+		return $tree;
+	}
+	
+	/**
+	 * Get Elgg REstful API methods
+	 * 
+	 * returns [method] => array(function, parameters, call_method, auth_token, anonymous)
+	 */
+	public function getElggREST()
+	{
+		global $METHODS;
+		
+		$tree = array();
+		foreach ($METHODS as $method => $info)
+		{
+			$tree[$method] = array(	$info['function'], 'params: ' . implode(',', array_keys($info['parameters'])), $info['call_method'], 
+			 						($info['require_auth_token']) ? 'requires auth token' : 'auth token not required', 'anonymous is broken in Elgg');
+		}
+		
+		ksort($tree);
+		
+		return $tree;
+	}
+		
+	/**
+	 * Create array of all php files in directory and subdirectories
+	 * 
+	 * @param $dir full path to directory to begin search
+	 * @return array of every php file in $dir or below in file tree
+	 */
 	protected function recurseFileTree($dir)
 	{		
 		$view_list = array();

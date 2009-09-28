@@ -17,3 +17,8 @@
 #elgg_dev_tools_inspect {
 	margin-bottom: 30px;
 }
+#edt_ajax_spinner {
+	float: right;
+	margin-right: 340px;
+	display: none;
+}
