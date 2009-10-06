@@ -16,7 +16,9 @@ $displayerrors_flag = (int) get_plugin_setting('displayerrors', 'elgg_developer_
 $debug_flag = (int) $vars['config']->debug;
 $timing_flag = (int) get_plugin_setting('timing', 'elgg_developer_tools');
 $showviews_flag = (int) get_plugin_setting('showviews', 'elgg_developer_tools');
-
+$errorlog_flag = (int) get_plugin_setting('errorlog', 'elgg_developer_tools');
+$exceptionhandler_flag = (int) get_plugin_setting('exceptionhandler', 'elgg_developer_tools');
+$errorhandler_flag = (int) get_plugin_setting('errorhandler', 'elgg_developer_tools');
 
 /******************** build form *******************************/
 
@@ -63,6 +65,24 @@ $form_body .= "<p><h4>" . elgg_echo('elgg_dev_tools:debug:question') . "</h4>";
 $form_body .= elgg_view('input/radio', array('value'=>$debug_flag, 'internalname'=>'debug', 'options'=>array(elgg_echo('elgg_dev_tools:yes')=>1, elgg_echo('elgg_dev_tools:no')=>0)));
 $form_body .= '<em>' . elgg_echo('elgg_dev_tools:debug:explanation') . '</em></p>';
 /** end debug **/
+
+/** disable elgg error handler **/
+$form_body .= "<p><h4>" . elgg_echo('elgg_dev_tools:handler:error:question') . "</h4>";
+$form_body .= elgg_view('input/radio', array('value'=>$errorhandler_flag, 'internalname'=>'errorhandler', 'options'=>array(elgg_echo('elgg_dev_tools:yes')=>1, elgg_echo('elgg_dev_tools:no')=>0)));
+$form_body .= '<em>' . elgg_echo('elgg_dev_tools:handler:error:explanation') . '</em></p>';
+/** end disable elgg error handler **/
+
+/** disable elgg exception handler **/
+$form_body .= "<p><h4>" . elgg_echo('elgg_dev_tools:handler:exception:question') . "</h4>";
+$form_body .= elgg_view('input/radio', array('value'=>$exceptionhandler_flag, 'internalname'=>'exceptionhandler', 'options'=>array(elgg_echo('elgg_dev_tools:yes')=>1, elgg_echo('elgg_dev_tools:no')=>0)));
+$form_body .= '<em>' . elgg_echo('elgg_dev_tools:handler:exception:explanation') . '</em></p>';
+/** end disable elgg exception handler **/
+
+/** log to elgg uploads directory **/
+$form_body .= "<p><h4>" . elgg_echo('elgg_dev_tools:errorlog:question') . "</h4>";
+$form_body .= elgg_view('input/radio', array('value'=>$errorlog_flag, 'internalname'=>'errorlog', 'options'=>array(elgg_echo('elgg_dev_tools:yes')=>1, elgg_echo('elgg_dev_tools:no')=>0)));
+$form_body .= '<em>' . elgg_echo('elgg_dev_tools:errorlog:explanation') . '</em></p>';
+/** end log to elgg uploads directory **/
 
 /** timing **/
 $form_body .= "<p><h4>" . elgg_echo('elgg_dev_tools:timing:question') . "</h4>";

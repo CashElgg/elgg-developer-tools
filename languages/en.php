@@ -37,6 +37,18 @@ $english = array(
 	'elgg_dev_tools:showviews:question'			=> 'Wrap views with div elements?',
 	'elgg_dev_tools:showviews:explanation'		=> 'This wraps almost every view with a div container named for the view.',
 
+    /** disable error handler **/
+    'elgg_dev_tools:handler:error:question'     => 'Disable elgg error handler?',
+    'elgg_dev_tools:handler:error:explanation'=> 'Elgg suppresses quite a few errors types which can help debug all those white screen.',
+
+    /** disable exception handler **/
+    'elgg_dev_tools:handler:exception:question'     => 'Disable elgg exception handler?',
+	'elgg_dev_tools:handler:exception:explanation'=> 'Elgg suppresses quite a few exceptions and stack traces which can help debug all those white screen.',
+
+    /** Create debug.log in the elgg uploads directory **/
+    'elgg_dev_tools:errorlog:question'     => 'Create debug log in elgg uploads directory?',
+	'elgg_dev_tools:errorlog:explanation'=> 'If you\'re on a shared host it can be difficult to debug elgg if all errors gets logs to a shared error log. This will send all your errors to a debug.log file',
+
 
 // plugin builder
 	'elgg_dev_tools:builder'					=> "Plugin Builder",

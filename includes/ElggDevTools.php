@@ -26,7 +26,16 @@ class ElggDevTools
 	{
 		$displayerrors = get_plugin_setting('displayerrors', 'elgg_developer_tools');
 		if ($displayerrors) ini_set('display_errors', 1);
-		        
+
+        $errorlog = get_plugin_setting('errorlog', 'elgg_developer_tools');
+        if ($errorlog) ini_set('error_log', datalist_get('dataroot') . "debug.log");
+        
+        $exceptionhandler = get_plugin_setting('exceptionhandler', 'elgg_developer_tools');
+        if ($exceptionhandler) restore_exception_handler ();
+
+        $errorhandler = get_plugin_setting('errorhandler', 'elgg_developer_tools');
+        if ($errorhandler) restore_error_handler ();      		
+         		        
 		/** include firePHP if need be **/
 		$firephp = get_plugin_setting('enablefirephp', 'elgg_developer_tools');
 		if ($firephp) {

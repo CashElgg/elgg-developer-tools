@@ -22,6 +22,15 @@
 	/** display errors **/
 	set_plugin_setting('displayerrors', get_input('displayerrors'), 'elgg_developer_tools');
 
+	/** disable error handler **/
+	set_plugin_setting('errorhandler', get_input('errorhandler'), 'elgg_developer_tools');
+	
+	/** disable exception handler **/
+	set_plugin_setting('exceptionhandler', get_input('exceptionhandler'), 'elgg_developer_tools');
+	
+	/** change error log **/
+	set_plugin_setting('errorlog', get_input('errorlog'), 'elgg_developer_tools');		
+	
 	/** enable/disable simple cache **/
 	if (get_input('usesimplecache')) {
 		elgg_view_enable_simplecache();
