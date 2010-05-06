@@ -42,7 +42,7 @@ function edtInspectSubmit()
 		   $(this).hide();
 		 });
 	 
-	var inspect_type = $(".input-pulldown").val();
+	var inspect_type = $("select[name=inspect_type]").val();
 	
 	$.ajax({
 		type: "GET",
