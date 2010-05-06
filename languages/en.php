@@ -1,13 +1,13 @@
 <?php
-/*******************************************************************************
+/**
  * Elgg Dev Tools Language File
  *
  * @package Elgg Developer Tools
  * @author Aaron Saray (102degrees.com)
  * @author Cash Costello
- ******************************************************************************/
+ */
 
-/** build new array **/
+
 $english = array(
 // generics
 	'elgg_dev_tools:title'		=> 'Elgg Development Tools',
@@ -81,5 +81,4 @@ $english = array(
 
 );
 
-add_translation("en",$english);
-?>
+add_translation("en", $english);

@@ -1,4 +1,11 @@
 <?php
+/**
+ * Inspect Elgg variables
+ *
+ *
+ * @package Elgg Developer Tools
+ * @author Cash Costello
+ */
 
 class ElggInspector {
 
@@ -12,10 +19,8 @@ class ElggInspector {
 		global $CONFIG;
 		
 		$tree = array();
-		foreach ($CONFIG->events as $event => $types)
-		{
-			foreach ($types as $type => $handlers)
-			{
+		foreach ($CONFIG->events as $event => $types) {
+			foreach ($types as $type => $handlers) {
 				$tree[$event . ',' . $type] = array_values($handlers);
 			}
 		}
@@ -35,10 +40,8 @@ class ElggInspector {
 		global $CONFIG;
 		
 		$tree = array();
-		foreach ($CONFIG->hooks as $hook => $types)
-		{
-			foreach ($types as $type => $handlers)
-			{
+		foreach ($CONFIG->hooks as $hook => $types) {
+			foreach ($types as $type => $handlers) {
 				$tree[$hook . ',' . $type] = array_values($handlers);
 			}
 		}
@@ -64,26 +67,26 @@ class ElggInspector {
 		
 		// setup views array before adding extensions and plugin views
 		$views = array();
-		foreach ($coreViews as $view)
+		foreach ($coreViews as $view) {
 			$views[$view] = array($CONFIG->viewpath . "default/" . $view . ".php");
+		}
 
 		// add plugins and handle overrides
-		foreach ($CONFIG->views->locations['default'] as $view => $location)
-		{
+		foreach ($CONFIG->views->locations['default'] as $view => $location) {
 			$views[$view] = array($location . $view . ".php");
 		}
 		
 		// now extensions
-		foreach ($CONFIG->views->extensions as $view => $extensions)
-		{
+		foreach ($CONFIG->views->extensions as $view => $extensions) {
 			$view_list = array();
-			foreach ($extensions as $priority => $ext_view)
-			{
-				if (isset($views[$ext_view]))
-					$view_list[] = $views[$ext_view][0];	
+			foreach ($extensions as $priority => $ext_view) {
+				if (isset($views[$ext_view])) {
+					$view_list[] = $views[$ext_view][0];
+				}
 			}
-			if (count($view_list) > 0)
+			if (count($view_list) > 0) {
 				$views[$view] = $view_list;
+			}
 		}
 
 		ksort($views);
@@ -101,8 +104,7 @@ class ElggInspector {
 		global $CONFIG;
 		
 		$tree = array();
-		foreach ($CONFIG->widgets->handlers as $handler => $handler_obj)
-		{
+		foreach ($CONFIG->widgets->handlers as $handler => $handler_obj) {
 			$tree[$handler] = array($handler_obj->name, implode(',', array_values($handler_obj->context)));
 		}
 		
@@ -122,8 +124,7 @@ class ElggInspector {
 		global $CONFIG;
 		
 		$tree = array();
-		foreach ($CONFIG->actions as $action => $info)
-		{
+		foreach ($CONFIG->actions as $action => $info) {
 			$tree[$action] = array($info['file'], ($info['public']) ? 'public' : 'logged in only', ($info['admin']) ? 'admin only' : 'non-admin');
 		}
 		
@@ -142,8 +143,7 @@ class ElggInspector {
 		global $CONFIG;
 		
 		$tree = array();
-		foreach ($CONFIG->views->simplecache as $view)
-		{
+		foreach ($CONFIG->views->simplecache as $view) {
 			$tree[$view] = "";
 		}
 		
@@ -162,8 +162,7 @@ class ElggInspector {
 		global $METHODS;
 		
 		$tree = array();
-		foreach ($METHODS as $method => $info)
-		{
+		foreach ($METHODS as $method => $info) {
 			$tree[$method] = array(	$info['function'], 'params: ' . implode(',', array_keys($info['parameters'])), $info['call_method'], 
 			 						($info['require_auth_token']) ? 'requires auth token' : 'auth token not required', 'anonymous is broken in Elgg');
 		}
@@ -184,21 +183,14 @@ class ElggInspector {
 		$view_list = array();
 		
 		$handle = opendir($dir);
-		while ($file = readdir($handle))
-		{
-			if ($file[0] == '.')
-			{
+		while ($file = readdir($handle)) {
+			if ($file[0] == '.') {
 				
-			}
-			else if (is_dir($dir . $file))
-			{
+			} else if (is_dir($dir . $file)) {
 				$view_list = array_merge($view_list, $this->recurseFileTree($dir . $file. "/"));
-			}
-			else
-			{
+			} else {
 				$extension = strrchr(trim($file, "/"), '.');
-				if ($extension === ".php")
-				{	
+				if ($extension === ".php") {
 					$view_list[] = $dir . $file;
 				}
 			}
@@ -206,8 +198,7 @@ class ElggInspector {
 		closedir($handle);
 				
 		return $view_list;
-	}		
+	}
 	
 }
 
-?>

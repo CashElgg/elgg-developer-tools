@@ -1,13 +1,12 @@
 <?php
-/*******************************************************************************
+/**
  * %%plugin_name%%
  *
  * @author %%author%%
- ******************************************************************************/
+ */
 
-	function %%plugin_name%%_init()
-	{
-		global $CONFIG;
+function %%plugin_name%%_init() {
+	global $CONFIG;
 
 %%extend_css_call%%
 
@@ -19,10 +18,8 @@
 
 %%sidebar_menu_registration%%
 
-%%action_registration%%		
-		
-		return true;
-	}
+%%action_registration%%				
+}
 
 
 %%page_handler_func%%
@@ -30,5 +27,4 @@
 %%sidebar_menu_func%%
 
 	
-	register_elgg_event_handler('init', 'system', '%%plugin_name%%_init');
-?>
+register_elgg_event_handler('init', 'system', '%%plugin_name%%_init');

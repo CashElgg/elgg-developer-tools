@@ -1,14 +1,12 @@
 <?php 
-/*******************************************************************************
- * Inpsect View
+/**
+ * Inspect View
  * 
  * Inspect global variables of Elgg
  * 
  * @package Elgg Developer Tools
  * @author Cash Costello
- ******************************************************************************/
-
-global $CONFIG;
+ */
 
 echo '<p>' . elgg_echo('elgg_dev_tools:inspect:explanation') . '</p>';
 

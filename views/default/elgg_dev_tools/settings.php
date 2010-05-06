@@ -1,5 +1,5 @@
 <?php 
-/*******************************************************************************
+/**
  * Settings Form View
  * 
  * This is the form that the admin uses to change elgg dev tools options
@@ -7,7 +7,7 @@
  * @package Elgg Developer Tools
  * @author Aaron Saray (102degrees.com)
  * @author Cash Costello
- ******************************************************************************/
+ */
 
 $simplecache_flag = $vars['config']->simplecache_enabled;
 $viewscache_flag = $vars['config']->viewpath_cache_enabled;
@@ -101,5 +101,3 @@ $form_body .= "<br /><br />";
 $form_body .= elgg_view('input/submit', array('value'=>elgg_echo('elgg_dev_tools:settings:formbutton')));
 
 echo elgg_view('input/form', array('body'=>$form_body, 'action'=>$CONFIG->wwwroot . 'action/elgg_dev_tools/updatesettings', 'internalid'=>'elgg_dev_tools_form'));
-
-?>

@@ -1,5 +1,5 @@
 <?php
-/*******************************************************************************
+/**
  * Contains the Fake FirePHP classes
  * 
  * This page holds all of the classes to accept fire PHP calls - and log their errors
@@ -7,7 +7,7 @@
  * @package Elgg Developer Tools
  * @author Aaron Saray (102degrees.com)
  * @author Cash Costello
- ******************************************************************************/
+ */
 
 /**
  * Static FB class reimplementation
@@ -65,4 +65,3 @@ class FirePHP
     public function __construct(){FB::logFirePHPStillInUse(__METHOD__);}
     public function __call($function, $args){/**do nothing - logged constructor **/}
 }
-?>

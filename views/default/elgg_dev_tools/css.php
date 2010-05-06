@@ -1,3 +1,4 @@
+/* Elgg Developer Tools begin */
 #elgg_dev_tools_form em {
 	font-size: 75%;
 	font-style: italic;
@@ -22,3 +23,4 @@
 	margin-right: 340px;
 	display: none;
 }
+/* Elgg Developer Tools end */

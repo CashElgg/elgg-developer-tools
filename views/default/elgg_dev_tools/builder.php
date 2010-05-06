@@ -1,12 +1,12 @@
 <?php 
-/*******************************************************************************
+/**************************************************************
  * Plugin Builder Form View
  * 
  * This is the form that the admin uses to build a plugin skeleton
  * 
  * @package Elgg Developer Tools
  * @author Cash Costello
- ******************************************************************************/
+ */
 
 // check session for values in case something failed in the previous submit
 $params = $_SESSION['build_plugin'];
@@ -77,5 +77,3 @@ $form_body .= "<br />";
 $form_body .= elgg_view('input/submit', array('value'=>elgg_echo('elgg_dev_tools:builder:formbutton')));
 
 echo elgg_view('input/form', array('body'=>$form_body, 'action'=>$CONFIG->wwwroot . 'action/elgg_dev_tools/buildplugin', 'internalid'=>'elgg_dev_tools_form'));
-
-?>
