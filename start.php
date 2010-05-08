@@ -18,7 +18,6 @@ function elgg_dev_tools_init() {
 	ElggDevTools::launcher();
 
 	extend_view('css', 'elgg_dev_tools/css');
-	extend_view('metatags', 'header/elgg_dev_tools');
 
 	register_elgg_event_handler('pagesetup', 'system', 'elgg_dev_tools_pagesetup');
 
@@ -33,6 +32,9 @@ function elgg_dev_tools_init() {
  */
 function elgg_dev_tools_page_handler($page) {
 	global $CONFIG;
+
+	// only include javascript on dev tools pages
+	extend_view('metatags', 'header/elgg_dev_tools');
 
 	$tab = $page[0];
 	if (!$tab) {
