@@ -30,7 +30,7 @@ $english = array(
 	'elgg_dev_tools:enablefirephp:question'		=> 'Enable FirePHP logging?',
 	'elgg_dev_tools:enablefirephp:explanation'	=> 'Enable the FirePHP logging class - useful for ajax development or pushing debug information to Firebug.  See <a href="http://firephp.org">firephp.org</a>.',
 	'elgg_dev_tools:enablefirephp:warning'		=> "FirePHP is saying that you don't have the FirePHP Firefox extension installed.  If you really don't, check out <a href=\"http://firephp.org\">firephp.org</a> to get it.  Otherwise, just ignore this message.",
-	'elgg_dev_tools:debug:question'				=> 'Enable debug?',
+	'elgg_dev_tools:debug:question'				=> 'Enable debug? (Does not work with Elgg 1.7.x)',
 	'elgg_dev_tools:debug:explanation'			=> "This writes a tremendous amount of data to your server's error log concerning SQL queries. It is rarely useful because there are no logging levels.",
 	'elgg_dev_tools:timing:question'			=> 'Enable page creation timing?',
 	'elgg_dev_tools:timing:explanation'			=> "This writes the amount of time the page creation process took to your error log.",
