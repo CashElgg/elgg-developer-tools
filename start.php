@@ -103,6 +103,17 @@ function elgg_dev_tools_outline_views($hook, $entity_type, $returnvalue, $params
 	return $return_data;
 }
 
+/**
+ * Clear all the strings so the raw descriptor strings are displayed
+ */
+function elgg_dev_clear_strings() {
+	global $CONFIG;
+
+	$language = get_language();
+	$CONFIG->translations[$language] = array();
+	$CONFIG->translations['en'] = array();
+}
+
 
 // start the ElggDevTools as soon as possible (it is not recommended for other plugins to do this!)
 elgg_dev_tools_init();

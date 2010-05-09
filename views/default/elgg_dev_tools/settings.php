@@ -19,6 +19,7 @@ $showviews_flag = (int) get_plugin_setting('showviews', 'elgg_developer_tools');
 $errorlog_flag = (int) get_plugin_setting('errorlog', 'elgg_developer_tools');
 $exceptionhandler_flag = (int) get_plugin_setting('exceptionhandler', 'elgg_developer_tools');
 $errorhandler_flag = (int) get_plugin_setting('errorhandler', 'elgg_developer_tools');
+$showstrings_flag = (int)get_plugin_setting('showstrings', 'elgg_developer_tools');
 
 /******************** build form *******************************/
 
@@ -94,6 +95,12 @@ $form_body .= '<em>' . elgg_echo('elgg_dev_tools:timing:explanation') . '</em></
 $form_body .= "<p><h4>" . elgg_echo('elgg_dev_tools:showviews:question') . "</h4>";
 $form_body .= elgg_view('input/radio', array('value'=>$showviews_flag, 'internalname'=>'showviews', 'options'=>array(elgg_echo('elgg_dev_tools:yes')=>1, elgg_echo('elgg_dev_tools:no')=>0)));
 $form_body .= '<em>' . elgg_echo('elgg_dev_tools:showviews:explanation') . '</em></p>';
+/** show views **/
+
+/** show views **/
+$form_body .= "<p><h4>" . elgg_echo('elgg_dev_tools:showstrings:question') . "</h4>";
+$form_body .= elgg_view('input/radio', array('value'=>$showstrings_flag, 'internalname'=>'showstrings', 'options'=>array(elgg_echo('elgg_dev_tools:yes')=>1, elgg_echo('elgg_dev_tools:no')=>0)));
+$form_body .= '<em>' . elgg_echo('elgg_dev_tools:showstrings:explanation') . '</em></p>';
 /** show views **/
 
 $form_body .= "<br /><br />";

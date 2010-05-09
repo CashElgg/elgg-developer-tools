@@ -36,6 +36,8 @@ $english = array(
 	'elgg_dev_tools:timing:explanation'			=> "This writes the amount of time the page creation process took to your error log.",
 	'elgg_dev_tools:showviews:question'			=> 'Wrap views with div elements?',
 	'elgg_dev_tools:showviews:explanation'		=> 'This wraps almost every view with a div container named for the view. Useful for finding the view creating particular HTML.',
+	'elgg_dev_tools:showstrings:question'		=> 'Show raw translation strings?',
+	'elgg_dev_tools:showstrings:explanation'	=> 'This displays the translation strings used by elgg_echo()',
 
     /** disable error handler **/
     'elgg_dev_tools:handler:error:question'     => 'Disable elgg error handler?',

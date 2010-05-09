@@ -56,5 +56,13 @@ class ElggDevTools
 		if ($showviews) {
 			register_plugin_hook('display', 'view', 'elgg_dev_tools_outline_views');
 		}
+
+		$showstrings = get_plugin_setting('showstrings', 'elgg_developer_tools');
+		if ($showstrings) {
+			// first and last in case a plugin registers a translation in an init method
+			register_elgg_event_handler('init', 'system', 'elgg_dev_clear_strings', 1000);
+			register_elgg_event_handler('init', 'system', 'elgg_dev_clear_strings', 1);
+		}
+
 	}
 }

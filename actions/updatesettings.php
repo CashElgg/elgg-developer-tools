@@ -45,6 +45,7 @@ set_plugin_setting('timing', get_input('timing'), 'elgg_developer_tools');
 
 set_plugin_setting('showviews', get_input('showviews'), 'elgg_developer_tools');
 
+set_plugin_setting('showstrings', get_input('showstrings'), 'elgg_developer_tools');
 
 
 system_message(elgg_echo("elgg_dev_tools:message:successfulupdate"));
