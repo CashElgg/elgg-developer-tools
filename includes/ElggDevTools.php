@@ -64,5 +64,11 @@ class ElggDevTools
 			register_elgg_event_handler('init', 'system', 'elgg_dev_clear_strings', 1);
 		}
 
+		$logevents = get_plugin_setting('logevents', 'elgg_developer_tools');
+		if ($logevents) {
+			register_plugin_hook('all', 'all', 'elgg_dev_log_events');
+			register_elgg_event_handler('all', 'all', 'elgg_dev_log_events');
+		}
+
 	}
 }

@@ -38,7 +38,8 @@ $english = array(
 	'elgg_dev_tools:showviews:explanation'		=> 'This wraps almost every view with a div container named for the view. Useful for finding the view creating particular HTML.',
 	'elgg_dev_tools:showstrings:question'		=> 'Show raw translation strings?',
 	'elgg_dev_tools:showstrings:explanation'	=> 'This displays the translation strings used by elgg_echo()',
-
+	'elgg_dev_tools:logevents:question'			=> 'Log events?',
+	'elgg_dev_tools:logevents:explanation'		=> 'Write events and plugin hooks to the log. Warning: there are many of these per page.',
     /** disable error handler **/
     'elgg_dev_tools:handler:error:question'     => 'Disable elgg error handler?',
     'elgg_dev_tools:handler:error:explanation'=> 'Elgg suppresses quite a few errors types which can help debug problems.',
@@ -50,7 +51,6 @@ $english = array(
     /** Create debug.log in the elgg uploads directory **/
     'elgg_dev_tools:errorlog:question'     => 'Create debug log in elgg data directory?',
 	'elgg_dev_tools:errorlog:explanation'=> 'If you\'re on a shared host, it can be difficult to debug elgg if all logging goes to a shared error log. This will log to a debug.log file.',
-
 
 // plugin builder
 	'elgg_dev_tools:builder'					=> "Plugin Builder",
@@ -80,6 +80,9 @@ $english = array(
 // inspect
 	'elgg_dev_tools:inspect'					=> 'Inspect',
 	'elgg_dev_tools:inspect:explanation'		=> 'Inspect global variables of the Elgg framework.',
+
+	'elgg_dev_tools:event_log_msg'				=> "%s: '%s, %s' in %s",
+
 
 );
 

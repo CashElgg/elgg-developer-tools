@@ -114,6 +114,30 @@ function elgg_dev_clear_strings() {
 	$CONFIG->translations['en'] = array();
 }
 
+/**
+ * Log the events and plugin hooks
+ */
+function elgg_dev_log_events($name, $type) {
+	$stack = debug_backtrace();
+	if ($stack[1]['function'] == 'events') {
+		$event_type = 'Event';
+	} else {
+		$event_type = 'Plugin hook';
+	}
+	$function = $stack[3]['function'];
+	if ($function == 'require_once' || $function == 'include_once') {
+		$function = $stack[3]['file'];
+	}
+	error_log(sprintf(elgg_echo('elgg_dev_tools:event_log_msg'),
+					$event_type,
+					$name,
+					$type,
+					$function));
+
+	//var_dump($stack);
+	//exit;
+	//error_log(print_r(, true));
+}
 
 // start the ElggDevTools as soon as possible (it is not recommended for other plugins to do this!)
 elgg_dev_tools_init();
