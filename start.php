@@ -96,9 +96,8 @@ function elgg_dev_tools_outline_views($hook, $entity_type, $returnvalue, $params
 		return;
 	}
 
-	if ($returnvalue) {
-		$return_data = "<div id='view-$view'>" . $returnvalue . "</div>";
-	}
+	$return_data = "<div id='view-$view'>" . $returnvalue . "</div>";
+
 
 	return $return_data;
 }
@@ -118,13 +117,22 @@ function elgg_dev_clear_strings() {
  * Log the events and plugin hooks
  */
 function elgg_dev_log_events($name, $type) {
+
+	// filter out some very common events
+	if ($name == 'view' || $name == 'display' || $name == 'log') {
+		return;
+	}
+	if ($name == 'session:get' || $name == 'validate') {
+		return;
+	}
+
 	$stack = debug_backtrace();
 	if ($stack[1]['function'] == 'events') {
 		$event_type = 'Event';
 	} else {
 		$event_type = 'Plugin hook';
 	}
-	$function = $stack[3]['function'];
+	$function = $stack[3]['function'] . '()';
 	if ($function == 'require_once' || $function == 'include_once') {
 		$function = $stack[3]['file'];
 	}
@@ -134,9 +142,7 @@ function elgg_dev_log_events($name, $type) {
 					$type,
 					$function));
 
-	//var_dump($stack);
-	//exit;
-	//error_log(print_r(, true));
+	unset($stack);
 }
 
 // start the ElggDevTools as soon as possible (it is not recommended for other plugins to do this!)
