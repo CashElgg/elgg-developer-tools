@@ -30,8 +30,8 @@ $english = array(
 	'elgg_dev_tools:enablefirephp:question'		=> 'Enable FirePHP logging?',
 	'elgg_dev_tools:enablefirephp:explanation'	=> 'Enable the FirePHP logging class - useful for ajax development or pushing debug information to Firebug.  See <a href="http://firephp.org">firephp.org</a>.',
 	'elgg_dev_tools:enablefirephp:warning'		=> "FirePHP is saying that you don't have the FirePHP Firefox extension installed.  If you really don't, check out <a href=\"http://firephp.org\">firephp.org</a> to get it.  Otherwise, just ignore this message.",
-	'elgg_dev_tools:debug:question'				=> 'Enable debug? (Does not work with Elgg 1.7.x)',
-	'elgg_dev_tools:debug:explanation'			=> "This writes a tremendous amount of data to your server's error log concerning SQL queries. It is rarely useful because there are no logging levels.",
+	'elgg_dev_tools:debug:question'				=> 'Elgg debug trace level',
+	'elgg_dev_tools:debug:explanation'			=> "Production sites normally use ERROR or OFF. NOTICE logs all the database queries.",
 	'elgg_dev_tools:timing:question'			=> 'Enable page creation timing?',
 	'elgg_dev_tools:timing:explanation'			=> "This writes the amount of time the page creation process took to your error log.",
 	'elgg_dev_tools:showviews:question'			=> 'Wrap views with div elements?',
@@ -41,16 +41,16 @@ $english = array(
 	'elgg_dev_tools:logevents:question'			=> 'Log events?',
 	'elgg_dev_tools:logevents:explanation'		=> 'Write events and plugin hooks to the log. Warning: there are many of these per page.',
     /** disable error handler **/
-    'elgg_dev_tools:handler:error:question'     => 'Disable elgg error handler?',
-    'elgg_dev_tools:handler:error:explanation'=> 'Elgg suppresses quite a few errors types which can help debug problems.',
+    'elgg_dev_tools:handler:error:question'		=> 'Disable elgg error handler?',
+    'elgg_dev_tools:handler:error:explanation'	=> "Elgg routes PHP errors through its own error handler controlled by the debug trace level. See __elgg_php_error_handler() for details.",
 
     /** disable exception handler **/
-    'elgg_dev_tools:handler:exception:question'     => 'Disable elgg exception handler?',
-	'elgg_dev_tools:handler:exception:explanation'=> 'Elgg suppresses quite a few exceptions and stack traces which can help debug problems.',
+    'elgg_dev_tools:handler:exception:question'	=> 'Disable elgg exception handler?',
+	'elgg_dev_tools:handler:exception:explanation'=> "Elgg registers an exception handler that sends them to PHP's error log and the screen. See __elgg_php_exception_handler() for details.",
 
     /** Create debug.log in the elgg uploads directory **/
-    'elgg_dev_tools:errorlog:question'     => 'Create debug log in elgg data directory?',
-	'elgg_dev_tools:errorlog:explanation'=> 'If you\'re on a shared host, it can be difficult to debug elgg if all logging goes to a shared error log. This will log to a debug.log file.',
+    'elgg_dev_tools:errorlog:question'			=> 'Create debug log in elgg data directory?',
+	'elgg_dev_tools:errorlog:explanation'		=> 'If you\'re on a shared host, it can be difficult to debug elgg if all logging goes to a shared error log. This will log to a debug.log file.',
 
 // plugin builder
 	'elgg_dev_tools:builder'					=> "Plugin Builder",

@@ -13,7 +13,6 @@ $simplecache_flag = $vars['config']->simplecache_enabled;
 $viewscache_flag = $vars['config']->viewpath_cache_enabled;
 $firephp_flag = (int) get_plugin_setting('enablefirephp', 'elgg_developer_tools');
 $displayerrors_flag = (int) get_plugin_setting('displayerrors', 'elgg_developer_tools');
-$debug_flag = (int) $vars['config']->debug;
 $timing_flag = (int) get_plugin_setting('timing', 'elgg_developer_tools');
 $showviews_flag = (int) get_plugin_setting('showviews', 'elgg_developer_tools');
 $errorlog_flag = (int) get_plugin_setting('errorlog', 'elgg_developer_tools');
@@ -21,6 +20,10 @@ $exceptionhandler_flag = (int) get_plugin_setting('exceptionhandler', 'elgg_deve
 $errorhandler_flag = (int) get_plugin_setting('errorhandler', 'elgg_developer_tools');
 $showstrings_flag = (int)get_plugin_setting('showstrings', 'elgg_developer_tools');
 $logevents_flag = (int)get_plugin_setting('logevents', 'elgg_developer_tools');
+$debug_level = $vars['config']->debug;
+if (!$debug_level) {
+	$debug_level = 'OFF';
+}
 
 /******************** build form *******************************/
 
@@ -47,7 +50,7 @@ $form_body .= '<em>' . elgg_echo('elgg_dev_tools:displayerrors:explanation') . '
 /** firephp **/
 $form_body .= '<p><h4>' . elgg_echo('elgg_dev_tools:enablefirephp:question') . '</h4>';
 
-/** helper - see if fire php extension is installed - sometimes is wrong - drat **/
+// helper - see if fire php extension is installed - sometimes is wrong - drat
 if ($value) {
     if (class_exists('FirePHP')) {
         $fb = FirePHP::getInstance(TRUE);
@@ -64,8 +67,8 @@ $form_body .= '<em>' . elgg_echo('elgg_dev_tools:enablefirephp:explanation') . '
 
 /** debug **/
 $form_body .= "<p><h4>" . elgg_echo('elgg_dev_tools:debug:question') . "</h4>";
-$form_body .= elgg_view('input/radio', array('value'=>$debug_flag, 'internalname'=>'debug', 'options'=>array(elgg_echo('elgg_dev_tools:yes')=>1, elgg_echo('elgg_dev_tools:no')=>0)));
-$form_body .= '<em>' . elgg_echo('elgg_dev_tools:debug:explanation') . '</em></p>';
+$form_body .= elgg_view('input/pulldown', array('value'=>$debug_level, 'internalname'=>'debug', 'options'=>array('OFF', 'ERROR', 'WARNING', 'NOTICE')));
+$form_body .= '<br /><em>' . elgg_echo('elgg_dev_tools:debug:explanation') . '</em></p>';
 /** end debug **/
 
 /** disable elgg error handler **/

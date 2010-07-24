@@ -35,10 +35,11 @@ if (get_input('useviewscache')) {
 	elgg_disable_filepath_cache();
 }
 
-if (get_input('debug')) {
-	set_config('debug', 1);
-} else {
+$debug_trace_level = get_input('debug');
+if ($debug_trace_level == 'OFF') {
 	unset_config('debug');
+} else {
+	set_config('debug', $debug_trace_level);
 }
 
 set_plugin_setting('timing', get_input('timing'), 'elgg_developer_tools');
