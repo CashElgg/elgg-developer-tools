@@ -96,7 +96,7 @@ function elgg_dev_tools_outline_views($hook, $entity_type, $returnvalue, $params
 		return;
 	}
 
-	$return_data = "<div id='view-$view'>" . $returnvalue . "</div>";
+	$return_data = "<div id=\"view-$view\">$returnvalue</div>";
 
 
 	return $return_data;
