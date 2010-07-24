@@ -55,8 +55,8 @@ switch ($inspect_type) {
 	case 'Simple Cache':
 		$tree = $inspector->getElggSimpleCache();
 		break;
-	case 'REST API':
-		$tree = $inspector->getElggREST();
+	case 'Web Services':
+		$tree = $inspector->getElggWebServices();
 		break;
 	default:
 		echo "$inspect_type not implemented";

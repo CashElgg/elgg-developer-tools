@@ -153,25 +153,33 @@ class ElggInspector {
 	}
 	
 	/**
-	 * Get Elgg REstful API methods
+	 * Get Elgg Web Services API methods
 	 * 
-	 * returns [method] => array(function, parameters, call_method, auth_token, anonymous)
+	 * returns [method] => array(function, parameters, call_method, api auth, user auth)
 	 */
-	public function getElggREST()
+	public function getElggWebServices()
 	{
-		global $METHODS;
+		global $API_METHODS;
 		
 		$tree = array();
-		foreach ($METHODS as $method => $info) {
-			$tree[$method] = array(	$info['function'], 'params: ' . implode(',', array_keys($info['parameters'])), $info['call_method'], 
-			 						($info['require_auth_token']) ? 'requires auth token' : 'auth token not required', 'anonymous is broken in Elgg');
+		foreach ($API_METHODS as $method => $info) {
+			$params = implode(', ', array_keys($info['parameters']));
+			if (!$params) {
+				$params = 'none';
+			}
+			$tree[$method] = array(	$info['function'], 
+									"params: $params",
+									$info['call_method'],
+									($info['require_api_auth']) ? 'API authentication required' : 'No API authentication required',
+			 						($info['require_user_auth']) ? 'User authentication required' : 'No user authentication required',
+				);
 		}
 		
 		ksort($tree);
 		
 		return $tree;
 	}
-		
+	
 	/**
 	 * Create array of all php files in directory and subdirectories
 	 * 

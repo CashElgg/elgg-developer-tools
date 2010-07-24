@@ -18,9 +18,9 @@ echo elgg_view('input/pulldown', array( 'internalname' => 'inspect_type',
 																	'Actions' => 'Actions',
 																	'Events' => 'Events', 
 																	'Plugin Hooks' => 'Plugin Hooks',
-																	'REST API' => 'REST API',
 																	'Simple Cache' => 'Simple Cache',
 																	'Views' => 'Views',
+																	'Web Services' => 'Web Services',
 																	'Widgets' => 'Widgets',
 										) ));
 
