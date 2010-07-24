@@ -17,7 +17,7 @@ function elgg_dev_tools_init() {
 	require_once dirname(__FILE__) . '/includes/ElggDevTools.php';
 	ElggDevTools::launcher();
 
-	extend_view('css', 'elgg_dev_tools/css');
+	elgg_extend_view('css', 'elgg_dev_tools/css');
 
 	register_elgg_event_handler('pagesetup', 'system', 'elgg_dev_tools_pagesetup');
 
@@ -34,7 +34,7 @@ function elgg_dev_tools_page_handler($page) {
 	global $CONFIG;
 
 	// only include javascript on dev tools pages
-	extend_view('metatags', 'header/elgg_dev_tools');
+	elgg_extend_view('metatags', 'header/elgg_dev_tools');
 
 	$tab = $page[0];
 	if (!$tab) {
