@@ -63,8 +63,9 @@ function elgg_dev_tools_pagesetup() {
 function elgg_dev_tools_shutdown_hook() {
 	global $CONFIG, $START_MICROTIME;
 
-	// run if debug is turned off and timing is turned on
-	if (!isset($CONFIG->debug) || !$CONFIG->debug) {
+	// run if timing is turned on and debug trace level not set to notice
+	// Elgg core handles this if debug set to NOTICE
+	if (!isset($CONFIG->debug) || $CONFIG->debug != 'NOTICE') {
 		$creation_time = (float)(microtime(TRUE) - $START_MICROTIME);
 		error_log("Page {$_SERVER['REQUEST_URI']} generated in $creation_time seconds");
 	}
