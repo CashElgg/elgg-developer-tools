@@ -21,7 +21,9 @@ set_plugin_setting('errorhandler', get_input('errorhandler'), 'elgg_developer_to
 
 set_plugin_setting('exceptionhandler', get_input('exceptionhandler'), 'elgg_developer_tools');
 
-set_plugin_setting('errorlog', get_input('errorlog'), 'elgg_developer_tools');		
+set_plugin_setting('errorlog', get_input('errorlog'), 'elgg_developer_tools');
+
+set_plugin_setting('htmllog', get_input('htmllog'), 'elgg_developer_tools');
 
 if (get_input('usesimplecache')) {
 	elgg_view_enable_simplecache();

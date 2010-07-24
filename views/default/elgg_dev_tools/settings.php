@@ -12,12 +12,13 @@
 $simplecache_flag = $vars['config']->simplecache_enabled;
 $viewscache_flag = $vars['config']->viewpath_cache_enabled;
 $firephp_flag = (int) get_plugin_setting('enablefirephp', 'elgg_developer_tools');
+//$htmllog_flag = (int) get_plugin_setting('htmllog', 'elgg_developer_tools');
 $displayerrors_flag = (int) get_plugin_setting('displayerrors', 'elgg_developer_tools');
+$errorlog_flag = (int) get_plugin_setting('errorlog', 'elgg_developer_tools');
+$errorhandler_flag = (int) get_plugin_setting('errorhandler', 'elgg_developer_tools');
+$exceptionhandler_flag = (int) get_plugin_setting('exceptionhandler', 'elgg_developer_tools');
 $timing_flag = (int) get_plugin_setting('timing', 'elgg_developer_tools');
 $showviews_flag = (int) get_plugin_setting('showviews', 'elgg_developer_tools');
-$errorlog_flag = (int) get_plugin_setting('errorlog', 'elgg_developer_tools');
-$exceptionhandler_flag = (int) get_plugin_setting('exceptionhandler', 'elgg_developer_tools');
-$errorhandler_flag = (int) get_plugin_setting('errorhandler', 'elgg_developer_tools');
 $showstrings_flag = (int)get_plugin_setting('showstrings', 'elgg_developer_tools');
 $logevents_flag = (int)get_plugin_setting('logevents', 'elgg_developer_tools');
 $debug_level = $vars['config']->debug;
@@ -70,6 +71,15 @@ $form_body .= "<p><h4>" . elgg_echo('elgg_dev_tools:debug:question') . "</h4>";
 $form_body .= elgg_view('input/pulldown', array('value'=>$debug_level, 'internalname'=>'debug', 'options'=>array('OFF', 'ERROR', 'WARNING', 'NOTICE')));
 $form_body .= '<br /><em>' . elgg_echo('elgg_dev_tools:debug:explanation') . '</em></p>';
 /** end debug **/
+
+/** log to footer **/
+/*
+$form_body .= "<p><h4>" . elgg_echo('elgg_dev_tools:htmllog:question') . "</h4>";
+$form_body .= elgg_view('input/radio', array('value'=>$htmllog_flag, 'internalname'=>'htmllog', 'options'=>array(elgg_echo('elgg_dev_tools:yes')=>1, elgg_echo('elgg_dev_tools:no')=>0)));
+$form_body .= '<em>' . elgg_echo('elgg_dev_tools:htmllog:explanation') . '</em></p>';
+ * 
+ */
+/** end log to footer **/
 
 /** disable elgg error handler **/
 $form_body .= "<p><h4>" . elgg_echo('elgg_dev_tools:handler:error:question') . "</h4>";

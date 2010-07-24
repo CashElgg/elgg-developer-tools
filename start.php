@@ -25,6 +25,11 @@ function elgg_dev_tools_init() {
 
 	register_action("elgg_dev_tools/updatesettings", FALSE, $CONFIG->pluginspath ."elgg_dev_tools/actions/updatesettings.php", TRUE);
 	register_action("elgg_dev_tools/buildplugin", FALSE, $CONFIG->pluginspath ."elgg_dev_tools/actions/buildplugin.php", TRUE);
+
+	// this should only run when HTML is produced and Elgg makes this difficult to determine
+	//if ((int)get_plugin_setting('htmllog', 'elgg_developer_tools') != 0) {
+	//	elgg_dev_setup_html_debugging();
+	//}
 }
 
 /**
@@ -144,6 +149,30 @@ function elgg_dev_log_events($name, $type) {
 					$function));
 
 	unset($stack);
+}
+
+/**
+ * Sets up Elgg to display debugging information to footer
+ */
+function elgg_dev_setup_html_debugging() {
+	global $ELGG_DEV_LOG;
+
+	$ELGG_DEV_LOG = array();
+
+	register_plugin_hook('debug', 'log', 'elgg_dev_logger');
+
+	elgg_extend_view('page_elements/footer', 'elgg_dev_tools/footer', 1);
+}
+
+/**
+ * Cache debugging and logging for later display
+ */
+function elgg_dev_logger($name, $type, $returnvalue, $params) {
+	global $ELGG_DEV_LOG;
+
+	$ELGG_DEV_LOG[] = $params['msg'];
+
+	return FALSE;
 }
 
 // start the ElggDevTools as soon as possible (it is not recommended for other plugins to do this!)

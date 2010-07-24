@@ -32,6 +32,8 @@ $english = array(
 	'elgg_dev_tools:enablefirephp:warning'		=> "FirePHP is saying that you don't have the FirePHP Firefox extension installed.  If you really don't, check out <a href=\"http://firephp.org\">firephp.org</a> to get it.  Otherwise, just ignore this message.",
 	'elgg_dev_tools:debug:question'				=> 'Elgg debug trace level',
 	'elgg_dev_tools:debug:explanation'			=> "Production sites normally use ERROR or OFF. NOTICE logs all the database queries.",
+	'elgg_dev_tools:htmllog:question'			=> 'Display logging and debugging in footer of page?',
+	'elgg_dev_tools:htmllog:explanation'		=> "This displays debug information just above the footer of the page.",
 	'elgg_dev_tools:timing:question'			=> 'Enable page creation timing?',
 	'elgg_dev_tools:timing:explanation'			=> "This writes the amount of time the page creation process took to your error log.",
 	'elgg_dev_tools:showviews:question'			=> 'Wrap views with div elements?',

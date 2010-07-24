@@ -23,4 +23,10 @@
 	margin-right: 340px;
 	display: none;
 }
+#elgg_dev_tools_footer {
+	background: white;
+	margin-bottom: 20px;
+	padding: 10px;
+	-moz-border-radius: 8px;
+}
 /* Elgg Developer Tools end */
