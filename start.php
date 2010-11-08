@@ -17,6 +17,10 @@ function elgg_dev_tools_init() {
 	require_once dirname(__FILE__) . '/includes/ElggDevTools.php';
 	ElggDevTools::launcher();
 
+	// this can be removed in Elgg 1.8 (still won't be avilable until plugins load
+	require_once dirname(__FILE__) . '/classes/ElggDevTimer.php';
+	require_once dirname(__FILE__) . '/classes/ElggDevTimerManager.php';
+
 	elgg_extend_view('css', 'elgg_dev_tools/css');
 
 	register_elgg_event_handler('pagesetup', 'system', 'elgg_dev_tools_pagesetup');
